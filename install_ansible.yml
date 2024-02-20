@@ -1,0 +1,14 @@
+---
+- name: Install Ansible
+  hosts: SERVER-TOMCAT
+  become: true
+  tasks:
+    - name: Install EPEL repository
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Ansible
+      yum:
+        name: ansible
+        state: present
