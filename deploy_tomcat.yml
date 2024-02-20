@@ -1,0 +1,14 @@
+---
+- name: Deploy Tomcat Server
+  hosts: SERVER-TOMCAT
+  become: true
+  tasks:
+    - name: Install Java
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+    
+    - name: Install Tomcat
+      yum:
+        name: tomcat
+        state: present
