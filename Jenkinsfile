@@ -4,7 +4,6 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        ANSIBLE_HOME          = tool 'ansible' 
     }
 
     stages {
@@ -39,13 +38,13 @@ pipeline {
                         playbook: 'install_ansible.yml', 
                         inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
                         become: true, 
-                        ansibleHome: env.ANSIBLE_HOME
+                        ansibleName: 'ansible'
                     )
                     ansiblePlaybook(
                         playbook: 'deploy_tomcat.yml', 
                         inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
                         become: true, 
-                        ansibleHome: env.ANSIBLE_HOME
+                        ansibleName: 'ansible'
                     )
                 }
             }
