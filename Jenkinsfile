@@ -30,11 +30,11 @@ pipeline {
                 sh 'terraform apply -auto-approve'
             }
         }
-        // stage('Deploy Ansible and Tomcat') {
-        //    steps {
-        //        ansiblePlaybook playbook: 'install_ansible.yml', inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', become: true
-        //        ansiblePlaybook playbook: 'deploy_tomcat.yml', inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', become: true
-        //    }
-       // }
+        stage('Deploy Ansible and Tomcat') {
+           steps {
+              ansiblePlaybook playbook: 'install_ansible.yml', inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', become: true
+               ansiblePlaybook playbook: 'deploy_tomcat.yml', inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', become: true
+            }
+        }
     }
 }
