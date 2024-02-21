@@ -31,15 +31,15 @@ pipeline {
             }
         }
         
-        stage('Deploy Ansible and Tomcat') {
-            steps {
-                script {
-                    ansiblePlaybook(
-                        playbook: 'install_ansible.yml', 
-                        inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
-                        become: true, 
-                        ansibleName: 'ansible'
-                    )
+        // stage('Deploy Ansible and Tomcat') {
+          //  steps {
+          //      script {
+           //         ansiblePlaybook(
+           //             playbook: 'install_ansible.yml', 
+             //           inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
+              //          become: true, 
+              //          ansibleName: 'ansible'
+               //     )
                     ansiblePlaybook(
                         playbook: 'deploy_tomcat.yml', 
                         inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
