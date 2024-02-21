@@ -50,15 +50,15 @@ pipeline {
           //  }
       //  }
         stage('Deploy HTTP Server') {
-            steps {
-                script {
-                    // Assuming your EC2 instance has a public IP
-                    def ec2PublicIp = sh(script: "terraform output -json public_ip | jq -r .[0]", returnStdout: true).trim()
-                    
-                    // SSH into the EC2 instance and deploy the HTTP server
-                    sh "ssh -i /path/to/your/key.pem ec2-user@${ec2PublicIp} 'sudo yum install -y httpd && sudo systemctl start httpd'"
-                }
-            }
+    steps {
+        script {
+            // Fetch the public IP address of the EC2 instance
+            def ec2PublicIp = sh(script: "terraform output -json instance_public_ip | jq -r .[0]", returnStdout: true).trim()
+            
+            // SSH into the EC2 instance and deploy the HTTP server
+            sh "ssh -i /path/to/your/key.pem ec2-user@${ec2PublicIp} 'sudo yum install -y httpd && sudo systemctl start httpd'"
         }
+    }
+}
     }
 }
