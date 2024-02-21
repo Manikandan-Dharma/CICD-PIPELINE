@@ -40,14 +40,14 @@ pipeline {
               //          become: true, 
               //          ansibleName: 'ansible'
                //     )
-                    ansiblePlaybook(
-                        playbook: 'deploy_tomcat.yml', 
-                        inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
-                        become: true, 
-                        ansibleName: 'ansible'
-                    )
-                }
-            }
-        }
+                //    ansiblePlaybook(
+                 //       playbook: 'deploy_tomcat.yml', 
+                 //       inventory: '/var/lib/jenkins/workspace/CICD-PIPELINE/SERVER-TOMCAT', 
+                  //      become: true, 
+                   //     ansibleName: 'ansible'
+                 //   )
+            //    }
+          //  }
+      //  }
     }
 }
